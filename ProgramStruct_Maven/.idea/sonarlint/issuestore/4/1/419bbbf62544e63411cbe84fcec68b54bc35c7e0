@@ -1,0 +1,59 @@
+
+g
+java:S1192""JDefine a constant instead of duplicating this literal "[aA-zZ]*$" 4 times.(¸€±µ8ùŸ¨õ0
+q
+java:S1192%"ODefine a constant instead of duplicating this literal " rows affected" 3 times.(Ñ€ı¶ÿÿÿÿÿ8•ùŸ¨õ0
+m	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß÷õ8™ùŸ¨õ0
+m	java:S1179"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß÷õ8šùŸ¨õ0
+m	java:S117M"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß÷õ8œùŸ¨õ0
+[
+java:S1854"9Remove this useless assignment to local variable "clist".(İ¢é³úÿÿÿÿ8£ûŸ¨õ0
+?
+java:S1659""Declare "flag" on a separate line.(úÁŸœ8¨ûŸ¨õ0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(æéáĞ8®ûŸ¨õ0
+D
+java:S1125"'Remove the unnecessary boolean literal.(«¸ş•8´ûŸ¨õ0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(Õõ—æ8·ûŸ¨õ0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(³¼¥Ó8ºûŸ¨õ0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(‡å¥8½ûŸ¨õ0
+Z	java:S106 "9Replace this use of System.out or System.err by a logger.(ÒÌ–Œûÿÿÿÿ8ÀûŸ¨õ0
+G
+java:S5869""*Remove duplicates in this character class.(¸€±µ8ÂûŸ¨õ0
+G
+java:S5869""*Remove duplicates in this character class.(¸€±µ8ÆûŸ¨õ0
+G
+java:S5869""*Remove duplicates in this character class.(¸€±µ8ÏûŸ¨õ0
+Z	java:S106%"9Replace this use of System.out or System.err by a logger.(Ñ€ı¶ÿÿÿÿÿ8ØûŸ¨õ0
+T	java:S106&"9Replace this use of System.out or System.err by a logger.(†İ•V8ÛûŸ¨õ0
+Z	java:S106("9Replace this use of System.out or System.err by a logger.(œ¦Éğûÿÿÿÿ8ßûŸ¨õ0
+T	java:S106+"9Replace this use of System.out or System.err by a logger.(é¢ùu8âûŸ¨õ0
+[
+java:S1854/"9Remove this useless assignment to local variable "clist".(İ¢é³úÿÿÿÿ8åûŸ¨õ0
+?
+java:S1659.""Declare "flag" on a separate line.(úÁŸœ8éûŸ¨õ0
+U	java:S1061"9Replace this use of System.out or System.err by a logger.(ÿúÛé8ìûŸ¨õ0
+D
+java:S11257"'Remove the unnecessary boolean literal.(«¸ş•8÷ûŸ¨õ0
+U	java:S1068"9Replace this use of System.out or System.err by a logger.(Õõ—æ8üûŸ¨õ0
+U	java:S106:"9Replace this use of System.out or System.err by a logger.(³¼¥Ó8şûŸ¨õ0
+U	java:S106<"9Replace this use of System.out or System.err by a logger.(‡å¥8ÿûŸ¨õ0
+Z	java:S106>"9Replace this use of System.out or System.err by a logger.(ÒÌ–Œûÿÿÿÿ8€üŸ¨õ0
+G
+java:S5869@"*Remove duplicates in this character class.(¸€±µ8…üŸ¨õ0
+G
+java:S5869@"*Remove duplicates in this character class.(¸€±µ8‡üŸ¨õ0
+G
+java:S5869@"*Remove duplicates in this character class.(¸€±µ8ŠüŸ¨õ0
+Z	java:S106C"9Replace this use of System.out or System.err by a logger.(Ñ€ı¶ÿÿÿÿÿ8üŸ¨õ0
+U	java:S106D"9Replace this use of System.out or System.err by a logger.(ÔÒşğ8‘üŸ¨õ0
+Z	java:S106F"9Replace this use of System.out or System.err by a logger.(œ¦Éğûÿÿÿÿ8‘üŸ¨õ0
+T	java:S106I"9Replace this use of System.out or System.err by a logger.(é¢ùu8’üŸ¨õ0
+Z	java:S106L"9Replace this use of System.out or System.err by a logger.(úıæâüÿÿÿÿ8“üŸ¨õ0
+Z	java:S106O"9Replace this use of System.out or System.err by a logger.(Ñ€ı¶ÿÿÿÿÿ8—üŸ¨õ0
+Z	java:S106P"9Replace this use of System.out or System.err by a logger.(­¨‹€şÿÿÿÿ8˜üŸ¨õ0
+Z
+java:S1854S"8Remove this useless assignment to local variable "list".(ùù®òúÿÿÿÿ8›üŸ¨õ0
+U	java:S106T"9Replace this use of System.out or System.err by a logger.(ŒûË8üŸ¨õ0
+Z	java:S106X"9Replace this use of System.out or System.err by a logger.(æ¨¤šøÿÿÿÿ8¢üŸ¨õ0
+T
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8£üŸ¨õ0

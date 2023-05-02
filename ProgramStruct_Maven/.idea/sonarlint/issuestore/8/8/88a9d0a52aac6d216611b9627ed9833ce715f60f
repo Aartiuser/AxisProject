@@ -1,0 +1,18 @@
+
+r	java:S117""QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õé´Íÿÿÿÿÿ8ÉüŸ¨õ0
+r	java:S116"QRename this field "Branch" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÆéñÎùÿÿÿÿ8ÙüŸ¨õ0
+n	java:S116
+"RRename this field "AccType" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•‹ø¡8ÙüŸ¨õ0
+s	java:S116"RRename this field "cust_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ÿıûÿÿÿÿ8ÙüŸ¨õ0
+t	java:S116"SRename this field "Interest" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—ÕÂêüÿÿÿÿ8ÙüŸ¨õ0
+X	java:S125"<This block of commented-out lines of code should be removed.(›û›±8áüŸ¨õ0
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çõ¡¨úÿÿÿÿ8áüŸ¨õ0
+o	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õé´Íÿÿÿÿÿ8ãüŸ¨õ0
+
+java:S1186["€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(âÙ˜D8ôüŸ¨õ0
+V
+java:S1161[":Add the "@Override" annotation above this method signature(âÙ˜D8÷üŸ¨õ0
+
+java:S1186`"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(âÙ˜D8øüŸ¨õ0
+V
+java:S1161`":Add the "@Override" annotation above this method signature(âÙ˜D8ùüŸ¨õ0

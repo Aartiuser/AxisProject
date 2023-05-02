@@ -1,0 +1,16 @@
+
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(‚€Åô8ƒêŸ¨õ0
+b	java:S112."FDefine and throw a dedicated exception instead of using a generic one.(‚€Åô8êŸ¨õ0
+b	java:S112>"FDefine and throw a dedicated exception instead of using a generic one.(‚€Åô8êŸ¨õ0
+b	java:S112J"FDefine and throw a dedicated exception instead of using a generic one.(‚€Åô8‘êŸ¨õ0
+’
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(È’÷âıÿÿÿÿ8­êŸ¨õ0
+m	java:S117B"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñèæÈ8®êŸ¨õ0
+q
+java:S20956"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(úÅ¾Ùùÿÿÿÿ8øëŸ¨õ0
+d
+java:S2095"GUse try-with-resources or close this "Statement" in a "finally" clause.(ÚÀœ‚8ûëŸ¨õ0
+q
+java:S2095F"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(úÅ¾Ùùÿÿÿÿ8öëŸ¨õ0
+q
+java:S2095&"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(úÅ¾Ùùÿÿÿÿ8üëŸ¨õ0
