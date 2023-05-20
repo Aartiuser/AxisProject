@@ -102,11 +102,11 @@ function CreateTicket(props){
                                         ))}
                                     </select>
                                 </div>
-                                <MDBInput wrapperClass='mb-1' label='Start date of Availability' size='lg' id='sdate' type='date' max={event.sdate} min={today}value={formData.sdate}
+                                <MDBInput wrapperClass='mb-1' label='Start date of Availability' size='lg' id='sdate' type='date'  min={today}value={formData.sdate}
                                           onChange={(e) => setFormData({ ...formData, sdate: e.target.value })}
                                           className={errors.sdate && 'is-invalid'}
                                 />{errors.sdate && <div className='invalid-feedback'>{errors.sdate}</div>}
-                                <MDBInput wrapperClass='mb-1' label='End date of Availability' size='lg' id='edate' type='date' min={formData.sdate} max={event.sdate} value={formData.edate}
+                                <MDBInput wrapperClass='mb-1' label='End date of Availability' size='lg' id='edate' type='date' min={formData.sdate}  value={formData.edate}
                                           onChange={(e) => setFormData({ ...formData, edate: e.target.value })}
                                           className={errors.edate && 'is-invalid'}
                                 />{errors.edate && <div className='invalid-feedback'>{errors.edate}</div>}

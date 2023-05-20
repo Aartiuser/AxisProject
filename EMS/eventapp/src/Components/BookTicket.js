@@ -3,6 +3,7 @@ import UserService from "../Services/UserService";
 import {MDBCard, MDBCardBody, MDBContainer, MDBInput} from "mdb-react-ui-kit";
 import {MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader} from "mdbreact";
 import validator from "validator";
+import star from "../img/star.avif";
 
 function BookTicket(props){
 
@@ -140,8 +141,10 @@ function BookTicket(props){
         }
     }, [selectedTicketType]);
     return (
-        <div>
-            <div>
+        <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center' ,fontFamily:'Montserrat', minHeight: '90vh'}}>
+            <div >
                 {showForm &&(
                     <MDBContainer fluid className='d-flex align-items-center justify-content-center ' >
                         <div className='mask gradient-custom-3'></div>

@@ -32,7 +32,7 @@ function Location(){
     }
 
     return (
-        <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '80vh' ,fontFamily:'Montserrat'}}>
+        <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '90vh' ,fontFamily:'Montserrat'}}>
             <div>
                 {showForm &&(
                     <MDBContainer fluid className='d-flex align-items-center justify-content-center ' >

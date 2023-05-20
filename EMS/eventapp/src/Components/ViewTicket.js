@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import star from "../img/star.avif";
 import UserService from "../Services/UserService";
 import "../App.css";
+import fan from "../img/fan.jpg";
 class ViewTicket extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +30,7 @@ class ViewTicket extends Component {
     render() {
         return (
             <div>
-                <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat',
+                <div style={{ backgroundImage: `url(${fan})`, backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center' ,fontFamily:'Montserrat', minHeight: '90vh'}}>
                     <div className="container custom-container" >

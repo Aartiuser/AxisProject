@@ -14,6 +14,7 @@ function Signup() {
         phone: '',
         password: '',
         confirmPassword: '',
+        role:''
     });
 
     const [errors, setErrors] = useState({});
@@ -53,6 +54,9 @@ function Signup() {
         if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = 'Passwords do not match';
         }
+        if(!formData.role){
+            newErrors.name = 'Role is required';
+        }
 
         setErrors(newErrors);
 
@@ -63,6 +67,7 @@ function Signup() {
                     email: formData.email,
                     phone: formData.phone,
                     password: formData.password,
+                    role:formData.role
                 };
              setShowForm(false);
            await UserService.addUser(userData);
@@ -111,6 +116,11 @@ function Signup() {
                                           className={errors.password && 'is-invalid'}
                                 />
                                 {errors.password && <div className='invalid-feedback'>{errors.password}</div>}
+                                <MDBInput label='Confirm Password' size='lg' id='confirmPassword' type='password' value={formData.confirmPassword}
+                                          onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                                          className={errors.confirmPassword && 'is-invalid'}
+                                />
+                                {errors.confirmPassword && <div className='invalid-feedback'>{errors.password}</div>}
                                 <button className='mb-4 w-100 btn btn-dark' onClick={handleRegister}>Register</button>
                             </MDBCardBody>
                         </MDBCard>

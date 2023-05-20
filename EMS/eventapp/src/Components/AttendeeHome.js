@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import star from "../img/star.avif";
 import UserService from "../Services/UserService";
 import "../App.css";
+import Crousel from "./Crousel";
 class AttendeeHome extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +29,7 @@ class AttendeeHome extends Component {
             <div>
                 <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat',
                     backgroundSize: 'cover',
-                    backgroundPosition: 'center' ,fontFamily:'Montserrat', minHeight: '90vh'}}>
+                    backgroundPosition: 'center' ,fontFamily:'Montserrat', minHeight: '100vh'}}>
                     <div className="container custom-container" >
                         <center>
                             <h1 style={{ fontSize: '50px' }}>Events</h1>
