@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class OrderReq {
     int quantity;
-    BigDecimal totalPrice;
+    BigDecimal price;
     Events event;
     String email;
     Ticket ticket;
@@ -14,9 +14,9 @@ public class OrderReq {
     public OrderReq() {
     }
 
-    public OrderReq(int quantity, BigDecimal totalPrice, Events event, String email, Ticket ticket, String orderdate) {
+    public OrderReq(int quantity, BigDecimal price, Events event, String email, Ticket ticket, String orderdate) {
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.price = price;
         this.event = event;
         this.email = email;
         this.ticket = ticket;
@@ -31,12 +31,12 @@ public class OrderReq {
         this.quantity = quantity;
     }
 
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
     public void setTotalPrice(BigDecimal totalPrice) {
-        this.totalPrice = totalPrice;
+        this.price = totalPrice;
     }
 
     public Events getEvent() {

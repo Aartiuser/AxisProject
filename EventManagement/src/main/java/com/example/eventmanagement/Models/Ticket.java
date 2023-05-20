@@ -115,4 +115,18 @@ public class Ticket {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", events=" + events +
+                ", users=" + users +
+                ", ticketType=" + ticketType +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 }

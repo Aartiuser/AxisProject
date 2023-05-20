@@ -17,9 +17,9 @@ function Signup() {
     });
 
     const [errors, setErrors] = useState({});
-    const history=useHistory();
 
-    const handleRegister = (e) => {
+
+    async function handleRegister(e) {
         e.preventDefault();
 
         const newErrors = {};
@@ -65,8 +65,8 @@ function Signup() {
                     password: formData.password,
                 };
              setShowForm(false);
-            UserService.addUser(userData);
-            history.push("/");
+           await UserService.addUser(userData);
+            window.location.replace("/");
         }
     };
 

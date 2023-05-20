@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -32,6 +33,24 @@ public class OrderController {
     public List<Order> getbyeid(@PathVariable long eid){
         return orderService.getbyevid(eid);
     }
+
+    @GetMapping("/ticketsales/{email}")
+    @ResponseBody
+    public List<Order> getsales(@PathVariable String email) {
+        Users user = userService.getbymail(email);
+        List<Order> orders = new ArrayList<>();
+        List<Events> events = eventService.getbyuserid(user.getUserid());
+
+        for (Events event : events) {
+            List<Order> eventOrders = orderService.getbyevid(event.getId());
+            if (eventOrders != null) {
+                orders.addAll(eventOrders);
+            }
+        }
+        return orders;
+    }
+
+
     @PostMapping("/addOrder")
     @ResponseBody
     public Order add(@RequestBody OrderReq orderReq){
@@ -42,7 +61,7 @@ public class OrderController {
         order.setEvent(event);
         order.setUser(user);
         order.setTicket(ticket);
-        order.setPrice(orderReq.getTotalPrice());
+        order.setPrice(orderReq.getPrice());
         order.setQuantity(orderReq.getQuantity());
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         order.setOrderdate(LocalDateTime.parse(orderReq.getOrderdate(), formatter));

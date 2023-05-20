@@ -24,4 +24,8 @@ public class TicketServiceImp implements TicketService {
     public Ticket add(Ticket ticket){
         return ticketRepository.save(ticket);
     }
+    public List<Ticket> findbyuid(int uid){
+        return ticketRepository.findByUserId(uid);
+
+    }
 }

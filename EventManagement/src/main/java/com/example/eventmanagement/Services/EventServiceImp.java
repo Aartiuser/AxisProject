@@ -5,6 +5,7 @@ import com.example.eventmanagement.Repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class EventServiceImp implements EventService{
@@ -29,6 +30,18 @@ public class EventServiceImp implements EventService{
     @Override
     public Events getbyid(long id){
         return eventRepository.findById(id);
+    }
+    @Override
+    public List<Events> getbydt(LocalDate sdate){
+        return eventRepository.findBySdate(sdate);
+    }
+    @Override
+    public List<Events> getbyloc(String loc){
+        return eventRepository.findByLocation(loc);
+    }
+    @Override
+    public List<Events> getbytyp(String type){
+        return eventRepository.findByName(type);
     }
 
 }

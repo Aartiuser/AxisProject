@@ -9,4 +9,5 @@ public interface TicketService {
     Ticket findbyeidtid(long eid,int tid);
     List<Ticket> findbyeid(long id);
     Ticket add(Ticket ticket);
+    List<Ticket> findbyuid(int uid);
 }
