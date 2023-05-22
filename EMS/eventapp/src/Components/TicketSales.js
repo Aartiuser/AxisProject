@@ -100,15 +100,15 @@ class TicketSales extends Component {
                             </div>
                             <br/><br/>
                             <h2>Analytics of Your Ticket Sales Revenue:</h2>
-                            <Chart style={{ width: '800px' }}>
+                            <Chart style={{ width: '800px'}}>
                                 <ChartSeries>
-                                    <ChartSeriesItem type="column" data={chartData} field="totalOrderPrice" name="Total Order Price" color="#FF0000" />
+                                    <ChartSeriesItem type="column" data={chartData} field="totalOrderPrice" name="Total Order Price" color="#800080" />
                                 </ChartSeries>
                                 <ChartCategoryAxis>
-                                    <ChartCategoryAxisItem categories={chartCategories} labels={{ font:'Montserrat',color: '#000000' }} />
+                                    <ChartCategoryAxisItem categories={chartCategories} labels={{ font:'Montserrat',color: '#000000', padding: { top: 10 }}} />
                                 </ChartCategoryAxis>
                                 <ChartValueAxis>
-                                    <ChartValueAxisItem title={{ font:'Montserrat',text: 'Revenue In Rs', color: '#000000' }} color="#000000" />
+                                    <ChartValueAxisItem title={{ font:'Montserrat',text: 'Revenue In Rs', color: '#000000'}} color="#000000" labels={{ step: 2 }} />
                                 </ChartValueAxis>
                             </Chart>
                         </center>

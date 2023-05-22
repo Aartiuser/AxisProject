@@ -22,7 +22,7 @@ function Signup() {
 
     async function handleRegister(e) {
         e.preventDefault();
-
+        setErrors({}); // Clear existing errors
         const newErrors = {};
 
         // Validate name
@@ -42,6 +42,8 @@ function Signup() {
             newErrors.phone = 'Phone number is required';
         } else if (!validator.isMobilePhone(formData.phone)) {
             newErrors.phone = 'Invalid phone number';
+        } else if (formData.phone.length !== 10) {
+            newErrors.phone = 'Phone number should be 10 digits';
         }
 
         // Validate password strength
@@ -54,26 +56,28 @@ function Signup() {
         if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = 'Passwords do not match';
         }
-        if(!formData.role){
-            newErrors.name = 'Role is required';
+
+        // Validate role
+        if (!formData.role) {
+            newErrors.role = 'Role is required';
         }
 
         setErrors(newErrors);
 
         // Submit the form if there are no errors
-        if (Object.keys(errors).length === 0) {
-                const userData = {
-                    name: formData.name,
-                    email: formData.email,
-                    phone: formData.phone,
-                    password: formData.password,
-                    role:formData.role
-                };
-             setShowForm(false);
-           await UserService.addUser(userData);
+        if (Object.keys(newErrors).length === 0) {
+            const userData = {
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                password: formData.password,
+                role: formData.role,
+            };
+            setShowForm(false);
+            await UserService.addUser(userData);
             window.location.replace("/");
         }
-    };
+    }
 
 
     return (
@@ -99,28 +103,28 @@ function Signup() {
                                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                           className={errors.name && 'is-invalid'}
                                 />
-                                {errors.name && <div className='invalid-feedback'>{errors.name}</div>}
+                                {errors.name && (<div className='text-danger'>{errors.name}</div>)}
 
                                 <MDBInput label='Email' size='lg' id='email' type='email' value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className={errors.email && 'is-invalid'}
                                 />
-                                {errors.email && <div className='invalid-feedback'>{errors.email}</div>}
+                                {errors.email && <div className='text-danger'>{errors.email}</div>}
                                 <MDBInput label='Phone' size='lg' id='phone' type='text' value={formData.phone}
                                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                           className={errors.phone && 'is-invalid'}
                                 />
-                                {errors.phone && <div className='invalid-feedback'>{errors.phone}</div>}
+                                {errors.phone && <div className='text-danger'>{errors.phone}</div>}
                                 <MDBInput label='Password' size='lg' id='password' type='password' value={formData.password}
                                           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                           className={errors.password && 'is-invalid'}
                                 />
-                                {errors.password && <div className='invalid-feedback'>{errors.password}</div>}
+                                {errors.password && <div className='text-danger'>{errors.password}</div>}
                                 <MDBInput label='Confirm Password' size='lg' id='confirmPassword' type='password' value={formData.confirmPassword}
                                           onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                                           className={errors.confirmPassword && 'is-invalid'}
                                 />
-                                {errors.confirmPassword && <div className='invalid-feedback'>{errors.password}</div>}
+                                {errors.confirmPassword && <div className='text-danger'>{errors.confirmPassword}</div>}
                                 <button className='mb-4 w-100 btn btn-dark' onClick={handleRegister}>Register</button>
                             </MDBCardBody>
                         </MDBCard>

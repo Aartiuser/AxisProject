@@ -2,6 +2,7 @@ import React, {Component, useState} from 'react';
 import star from "../../img/star.avif";
 import {MDBCard, MDBCardBody, MDBContainer, MDBInput} from "mdb-react-ui-kit";
 import UserService from "../../Services/UserService";
+import CarouselComponent from "../CarouselComponent";
 
 function Location(){
     const[type,setType]=useState('');
@@ -88,7 +89,8 @@ function Location(){
                     </center>
                 </div>
             )}
-
+            <br/>
+            <CarouselComponent/>
         </div>
     );
 }

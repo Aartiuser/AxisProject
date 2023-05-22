@@ -2,6 +2,8 @@ import React, {Component, useState} from 'react';
 import star from "../../img/star.avif";
 import {MDBCard, MDBCardBody, MDBContainer, MDBInput} from "mdb-react-ui-kit";
 import UserService from "../../Services/UserService";
+import CarouselComponent from "../CarouselComponent";
+import Home from "../Home";
 
 function EventDate(){
     const[sdate,setDate]=useState('');
@@ -54,7 +56,7 @@ function EventDate(){
                 {showTable&&(
                     <div className="container custom-container" >
                         <center>
-                            <h1 style={{ fontSize: '50px' ,fontFamily:'Montserrat'}}>Events Scheduled on {sdate}</h1>
+                            <h1 style={{ fontSize: '50px' ,fontFamily:'Montserrat'}}>Events Scheduled On {sdate}</h1>
                             <div className="row">
                                 <table className='table table-striped table-bordered' style={{width: '100%', background: 'whitesmoke',fontFamily:'Montserrat' }} >
                                     <thead className='table-dark'>
@@ -89,7 +91,8 @@ function EventDate(){
                         </center>
                     </div>
                 )}
-
+                <br/>
+<CarouselComponent/>
             </div>
         );
 }

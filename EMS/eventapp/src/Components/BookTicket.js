@@ -4,11 +4,13 @@ import {MDBCard, MDBCardBody, MDBContainer, MDBInput} from "mdb-react-ui-kit";
 import {MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader} from "mdbreact";
 import validator from "validator";
 import star from "../img/star.avif";
+import * as emailjs from "@emailjs/browser";
 
 function BookTicket(props){
 
     const [formData, setFormData] = useState({
-        quantity: ''
+        quantity: '',
+        cardno:'',
     });
 
     const [showForm, setShowForm] = useState(true);
@@ -17,6 +19,7 @@ function BookTicket(props){
     const [ticket, seticket] = useState([]);
     const [selectedTicketType, setSelectedTicketType] = useState('');
     const [ticketPrice, setTicketPrice] = useState(null);
+    const [ticketQuantity, setTicketQuantity] = useState(null);
     const [showPaymentModal, setShowPaymentModal] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [orderData, setOrderData] = useState(null);
@@ -33,7 +36,7 @@ function BookTicket(props){
         if (!formData.quantity) {
             newErrors.quantity = 'Quantity is required';
         }else if(!validator.isNumeric(formData.quantity)){
-            newErrors.price='Invalid Quantity format';
+            newErrors.quantity='Invalid Quantity format';
         }
         setErrors(newErrors);
 
@@ -48,7 +51,6 @@ function BookTicket(props){
                 ticket: ticket,
                 orderdate: currentDate.toISOString()
             }
-            console.log(ticket);
             setOrderData(order);
             setShowPaymentModal(true);
             setShowForm(false);
@@ -58,28 +60,58 @@ function BookTicket(props){
         e.preventDefault();
         setSelectedTicketType(e.target.value)
     }
-    const handlePayment = async () => {
-        try {
-            setLoading(true);
 
-            const response = await UserService.addOrder(orderData);
-            console.log('Order placed:', response.data);
-            setLoading(false);
-            setShowPaymentModal(false);
-            setShowSuccessModal(true);
-        } catch (error) {
-            console.error('Error placing order:', error);
-            setLoading(false);
-            // Handle the error and show an error message to the user
+    const handlePayment = async () => {
+        const newErrors = {};
+
+        if (!formData.cardno) {
+            newErrors.cardno = 'Card Number is required';
+        }else if(!validator.isNumeric(formData.cardno)){
+            newErrors.cardno='Invalid Card format';
+        }
+
+        setErrors(newErrors);
+        if(Object.keys(newErrors).length === 0) {
+
+            try {
+                setLoading(true);
+
+                const response = await UserService.addOrder(orderData);
+                console.log('Order placed:', response.data);
+                setLoading(false);
+                setShowPaymentModal(false);
+                setShowSuccessModal(true);
+            } catch (error) {
+                console.error('Error placing order:', error);
+                setLoading(false);
+                // Handle the error and show an error message to the user
+            }
+            const templateParams = {
+                ToEmail: props.email, // Set the recipient email address
+                quantity: formData.quantity,
+                ticketType: type.type,
+                event: event.name
+            };
+
+            emailjs.send('default_service', 'template_k8mqwaj', templateParams, 'LHhJbnhY6oswXnMOX')
+                .then((response) => {
+                    console.log('Email sent!', response.status, response.text);
+                })
+                .catch((error) => {
+                    console.error('Error sending email:', error);
+                });
         }
     };
+
     const handleSuccessModalClose = () => {
         setShowSuccessModal(false);
         //UserService.updateTicket(upticket)
-        window.location.replace("/OrderHistory")
-        // Perform any necessary actions after payment success
-        // Update ticket table, etc.
+       window.location.replace("/OrderHistory")
     };
+    const cancelPayment=()=>{
+        setShowPaymentModal(false);
+        window.location.replace("/UserHome")
+    }
     useEffect(() => {
         const fetchTickets = async () => {
             try {
@@ -99,6 +131,7 @@ function BookTicket(props){
                 try {
                     const response = await UserService.getTicketByTypeEId(selectedTicketType,event.id);
                     setTicketPrice(response.data.price);
+                    setTicketQuantity(response.data.quantity);
                 } catch (error) {
                     console.error("Error fetching ticket price:", error);
                     setTicketPrice(null);
@@ -114,7 +147,6 @@ function BookTicket(props){
                 try {
                     const response = await UserService.getTicketType(selectedTicketType);
                     setype(response.data);
-                    console.log(type);
                 } catch (error) {
                     console.error("Error fetching ticket:", error);
                     setTicketPrice(null);
@@ -130,7 +162,6 @@ function BookTicket(props){
                 try {
                     const response = await UserService.getTicketByTypeEId(selectedTicketType,event.id);
                     seticket(response.data);
-                    console.log(ticket);
                 } catch (error) {
                     console.error("Error fetching ticket:", error);
                     setTicketPrice(null);
@@ -162,11 +193,12 @@ function BookTicket(props){
                                         ))}
                                     </select>
                                 </div>
-                                <MDBInput wrapperClass='mb-1' label='Quantity' size='lg' id='quantity' type='number'value={formData.quantity}
+                                <p>Quantity available: {ticketQuantity !== null ? `${ticketQuantity}` : "Loading..."}</p>
+                                <MDBInput wrapperClass='mb-1' label='Quantity' size='lg' id='quantity' type='number'value={formData.quantity} min={ticketQuantity}
                                           onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                                           className={errors.quantity && 'is-invalid'}
-                                />{errors.quantity && <div className='invalid-feedback'>{errors.quantity}</div>}
-                                <p>Price per ticket: {ticketPrice !== null ? `${ticketPrice}` : "Loading..."}</p>
+                                />{errors.quantity && <div className='text-danger'>{errors.quantity}</div>}
+                                <p>Price per ticket: {ticketPrice !== null ? "₹"+`${ticketPrice}` : "Loading..."}</p>
                                 <button onClick={Book} className='mb-4 w-100 btn btn-dark'>Book</button>
 
                             </MDBCardBody>
@@ -174,16 +206,22 @@ function BookTicket(props){
                     </MDBContainer>
                 )}
             </div>
-            <div>
+            <div style={{ backgroundImage: `url(${star})`, backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center' ,fontFamily:'Montserrat', minHeight: '90vh'}}>
                 <MDBModal isOpen={showPaymentModal} toggle={() => setShowPaymentModal(false)}>
                     <MDBModalHeader toggle={() => setShowPaymentModal(false)}>Confirm Payment</MDBModalHeader>
                     <MDBModalBody>
-                        <p>Total Price: {ticketPrice * formData.quantity}</p>
+                        <p>Total Price: ₹{ticketPrice * formData.quantity}</p>
                         <p>Quantity: {formData.quantity}</p>
                         <p>Ticket Type: {type.type}</p>
+                        <MDBInput wrapperClass='mb-1' label='Debit Card Number' size='lg' id='cardno' type='number' value={formData.cardno}
+                                  onChange={(e) => setFormData({ ...formData, cardno: e.target.value })}
+                                  className={errors.cardno && 'is-invalid'}
+                        />{errors.cardno && <div className='invalid-feedback'>{errors.cardno}</div>}
                     </MDBModalBody>
                     <MDBModalFooter>
-                        <button className='btn btn-secondary' onClick={() => setShowPaymentModal(false)}>
+                        <button className='btn btn-secondary' onClick={cancelPayment}>
                             Cancel
                         </button>
                         <button className='btn btn-primary' onClick={handlePayment} disabled={loading}>

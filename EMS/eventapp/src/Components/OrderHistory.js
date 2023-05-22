@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import star from "../img/star.avif";
 import UserService from "../Services/UserService";
+import CarouselComponent from "./CarouselComponent";
 
 class OrderHistory extends Component {
     constructor(props) {
@@ -10,12 +11,14 @@ class OrderHistory extends Component {
         }
     }
     componentDidMount() {
-        UserService.getOrderByUser(this.props.email).then((res) => {
-            this.setState({
-                orders: res.data
+            UserService.getOrderByUser(this.props.email).then((res) => {
+                const sortedOrders = res.data.sort((a, b) => new Date(b.orderdate) - new Date(a.orderdate));
+
+                this.setState({
+                    orders: sortedOrders
+                });
             });
-        });
-    }
+        }
     render() {
         return (
             <div>
@@ -54,6 +57,7 @@ class OrderHistory extends Component {
                             </div>
                         </center>
                     </div>
+                    <CarouselComponent/>
                 </div>
             </div>
         );

@@ -42,7 +42,7 @@ class OrgHome extends Component {
 
     render() {
         return (
-            <div div style={{ backgroundImage: `url(${fan})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '90vh' }}>
+            <div div style={{ backgroundImage: `url(${fan})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '90vh' ,display: 'flex'}}>
                 <div className="container" style={{fontFamily:'Montserrat'}}>
                     <center>
                         <h1 style={{ fontSize: '50px'}}>Events</h1>
