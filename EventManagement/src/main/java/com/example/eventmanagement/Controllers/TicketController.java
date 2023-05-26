@@ -77,4 +77,10 @@ public class TicketController {
         ticket.setUsers(users);
         return ticketService.add(ticket);
     }
+    @DeleteMapping("/delticket/{id}")
+    @ResponseBody
+    public void ticketdel(@PathVariable long id){
+        Ticket ticket=ticketService.findbyid(id);
+        ticketService.del(ticket);
+    }
 }

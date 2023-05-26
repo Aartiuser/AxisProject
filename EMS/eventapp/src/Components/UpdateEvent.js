@@ -3,6 +3,7 @@ import UserService from "../Services/UserService";
 import { MDBCard, MDBCardBody, MDBContainer, MDBInput } from "mdb-react-ui-kit";
 import { withRouter } from "react-router-dom";
 import fan from "../img/fan.jpg";
+import {toast, ToastContainer} from "react-toastify";
 
 function UpdateEvent(props) {
     const [formData, setFormData] = useState({
@@ -30,7 +31,7 @@ function UpdateEvent(props) {
         });
     }, []);
 
-    const updateEvent = (e) => {
+    async function updateEvent (e)  {
         e.preventDefault();
 
         const eventData = {
@@ -42,9 +43,10 @@ function UpdateEvent(props) {
             id: formData.id
         };
 
-        UserService.updateEvent(eventData, props.email);
-        alert("Update successful!");
-       window.location.replace('/UserHome');
+        await UserService.updateEvent(eventData, props.email);
+        toast.success("Update Successful");
+        window.location.replace("/UserHome")
+
     };
 
     return (
@@ -135,6 +137,7 @@ function UpdateEvent(props) {
                     </MDBCard>
                 </MDBContainer>
             </div>
+            <ToastContainer/>
         </div>
     );
 }

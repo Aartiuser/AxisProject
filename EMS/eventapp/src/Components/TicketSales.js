@@ -47,7 +47,6 @@ class TicketSales extends Component {
 
         const chartData = Object.values(groupedOrders).map((group) => ({
             event: group.event.name,
-            totalOrderQuantity: group.totalQuantity,
             totalOrderPrice: group.totalPrice,
         }));
 

@@ -9,6 +9,7 @@ class ViewTicket extends Component {
         this.state = {
             tickets: []
         }
+        this.delete = this.delete.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +26,12 @@ class ViewTicket extends Component {
             });
         });
     }
-
+    delete(ticket) {
+        UserService.delTicket(ticket.id).then(res => {
+            this.setState({ tickets: this.state.tickets.filter(Ticket => Ticket !== ticket) });
+            window.location.replace('/Viewtickets')
+        });
+    }
 
     render() {
         return (
@@ -47,6 +53,7 @@ class ViewTicket extends Component {
                                         <th style={{fontSize:'20px'}}><b>Ticket End Date</b></th>
                                         <th style={{fontSize:'20px'}}><b>Ticket Price</b></th>
                                         <th style={{fontSize:'20px'}}><b>Ticket Quantity</b></th>
+                                        <th style={{fontSize:'20px'}}><b>Actions</b></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -60,6 +67,9 @@ class ViewTicket extends Component {
                                                 <td style={{fontSize:'20px'}}>{ticket.endDate}</td>
                                                 <td style={{fontSize:'20px'}}>{ticket.price}</td>
                                                 <td style={{fontSize:'20px'}}>{ticket.quantity}</td>
+                                                <td>
+                                                <button style={{ marginLeft: "10px" , marginTop:"10px",fontFamily:'Montserrat'}} onClick={() => this.delete(ticket)} className="btn btn-danger">DELETE</button>
+                                                </td>
                                             </tr>
                                     )}
                                     </tbody>

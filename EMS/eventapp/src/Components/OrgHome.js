@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import fan from "../img/fan.jpg";
 import "../App.css";
+import {toast, ToastContainer} from "react-toastify";
 
 class OrgHome extends Component {
     constructor(props) {
@@ -23,10 +24,16 @@ class OrgHome extends Component {
         });
     }
 
+
     delete(event) {
-        UserService.delEvent(event).then(res => {
-            this.setState({ events: this.state.events.filter(Event => Event !== event) });
-            window.location.replace('/UserHome')
+        UserService.delEvent(event.id).then(res => {
+            if(res.data==="success"){
+                this.setState({ events: this.state.events.filter(Event => Event !== event) });
+                window.location.replace('/UserHome')
+            }
+            else {
+                toast.error("Event Cannot be deleted because tickets are issued.")
+            }
         });
     }
 
@@ -42,7 +49,7 @@ class OrgHome extends Component {
 
     render() {
         return (
-            <div div style={{ backgroundImage: `url(${fan})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '90vh' ,display: 'flex'}}>
+            <div div style={{ backgroundImage: `url(${fan})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '90vh' ,display: 'flex',marginBottom:'40px'}}>
                 <div className="container" style={{fontFamily:'Montserrat'}}>
                     <center>
                         <h1 style={{ fontSize: '50px'}}>Events</h1>
@@ -81,6 +88,7 @@ class OrgHome extends Component {
                         </div>
                     </center>
                 </div>
+                <ToastContainer/>
             </div>
         );
     }

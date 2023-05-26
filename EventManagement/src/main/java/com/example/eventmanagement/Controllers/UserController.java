@@ -28,11 +28,21 @@ public class UserController {
         String msg=userService.getbymailpswdrole(email,password,role);
         return msg;
     }
+    @PostMapping("/register")
+    @ResponseBody
+    public String register(@RequestBody Users user){
+        String email=user.getEmail();
+        Users users=userService.getbymail(email);
+        System.out.println(users);
+        if(users!=null)
+            return "User Exists";
+        else
+            return "NO";
+    }
     @PostMapping("/addusers")
     @ResponseBody
     public Users add(@RequestBody Users user){
         return userService.add(user);
     }
-
 
 }

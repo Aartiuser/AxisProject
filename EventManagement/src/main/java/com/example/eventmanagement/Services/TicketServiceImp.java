@@ -28,4 +28,10 @@ public class TicketServiceImp implements TicketService {
         return ticketRepository.findByUserId(uid);
 
     }
+    public Ticket findbyid(long id){
+        return ticketRepository.findById(id);
+    }
+    public void del(Ticket ticket){
+        ticketRepository.delete(ticket);
+    }
 }

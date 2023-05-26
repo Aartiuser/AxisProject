@@ -4,7 +4,11 @@ import zxcvbn from 'zxcvbn';
 import Home from "./Home";
 import {MDBCard, MDBCardBody, MDBContainer, MDBInput, MDBRadio} from "mdb-react-ui-kit";
 import UserService from "../Services/UserService";
-import {useHistory} from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//import CryptoJS from 'crypto-js';
+
+
 
 function Signup() {
     const [showForm, setShowForm] = useState(true);
@@ -19,6 +23,11 @@ function Signup() {
 
     const [errors, setErrors] = useState({});
 
+    /*async function hashPassword(password) {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        return hashedPassword;
+    }*/
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -73,9 +82,16 @@ function Signup() {
                 password: formData.password,
                 role: formData.role,
             };
-            setShowForm(false);
-            await UserService.addUser(userData);
-            window.location.replace("/");
+           const response= await UserService.checkUser(userData);
+           console.log(response);
+           if(response.data==="NO"){
+               setShowForm(false);
+               await UserService.addUser(userData);
+               toast.success("Registered Successfully");
+               window.location.replace("/");
+           }
+           else
+               toast.error("Email Id already Registered");
         }
     }
 
@@ -126,13 +142,17 @@ function Signup() {
                                 />
                                 {errors.confirmPassword && <div className='text-danger'>{errors.confirmPassword}</div>}
                                 <button className='mb-4 w-100 btn btn-dark' onClick={handleRegister}>Register</button>
+                                <div className={'d-flex flex-row justify-content-center mb-4'} >
+                                    <p className="mb-0">Already have an account? <a href='/login' className="fw-bold">Sign In</a></p>
+
+                                </div>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBContainer>
                 )}
             </div>
 
-
+<ToastContainer/>
         </div>
     );
 }

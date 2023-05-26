@@ -64,14 +64,17 @@ public class EventController {
         event.setUser(user);
         return eventService.add(event);
     }
-    @DeleteMapping("/eventdelete")
+    @DeleteMapping("/eventdelete/{id}")
     @ResponseBody
-    public void deleteev(@RequestBody EventReq eventReq){
-        Events event=eventReq.getEvents();
-        String email=eventReq.getEmail();
-        Users user=userService.getbymail(email);
-        event.setUser(user);
-        eventService.delevent(event);
+    public String deleteev(@PathVariable long id){
+        Events events=eventService.getbyid(id);
+        try{
+            eventService.delevent(events);
+            return "success";
+        }catch(Exception e){
+            return "failure";
+        }
+
     }
 
 }

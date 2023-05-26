@@ -9,6 +9,8 @@ import {
     from 'mdb-react-ui-kit';
 import UserService from "../Services/UserService";
 import Home from "./Home";
+import CryptoJS from "crypto-js";
+import {toast, ToastContainer} from "react-toastify";
 
 
 function Signin(props) {
@@ -33,7 +35,7 @@ function Signin(props) {
             window.location.replace('/UserHome')
             setShowForm(false);
         } else {
-            alert("Wrong Credentials");
+            toast.error("Wrong Credentials");
         }
     };
 
@@ -74,6 +76,7 @@ function Signin(props) {
                         </MDBContainer>
                     )}
                 </div>
+                <ToastContainer/>
             </div>
     );
 }

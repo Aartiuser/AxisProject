@@ -15,6 +15,9 @@ public interface TicketRepository extends JpaRepository<Ticket,Long> {
     List<Ticket> findAll();
     @Override
     Ticket save(Ticket ticket);
+    @Override
+    void delete(Ticket ticket);
+    Ticket findById(long id);
 
     @Query("select t from Ticket t where t.users.userid = :userId")
     List<Ticket> findByUserId(@Param("userId") Integer userId);

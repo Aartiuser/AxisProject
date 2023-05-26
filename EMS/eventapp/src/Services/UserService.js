@@ -4,7 +4,7 @@ const User_GET="http://localhost:8085/getusers";
 const User_Login="http://localhost:8085/login"
 const Event_ADD="http://localhost:8085/addevent";
 const Event_UP="http://localhost:8085/updateevent";
-const Event_DEL="http://localhost:8085/eventdelete";
+const Event_DEL="http://localhost:8085/eventdelete/";
 const Event_GET="http://localhost:8085/getevents";
 const Event_GETRole="http://localhost:8085/geteventsbyuid/";
 const Event_Date="http://localhost:8085/getbydate/";
@@ -19,16 +19,18 @@ const Order_ADD="http://localhost:8085/addOrder";
 const Ticket_EvId="http://localhost:8085/getbyevid/";
 const Ticket_TEid="http://localhost:8085/getbyeidtid/";
 const Ticket_UId="http://localhost:8085/getbyuid/";
+const Ticket_Del="http://localhost:8085/delticket/";
 const Order_User="http://localhost:8085/getorder/";
 const Ticket_Sales="http://localhost:8085/ticketsales/";
+const User_check="http://localhost:8085/register";
 
 class UserService{
 
     getEventByRole(email){
         return axios.get(Event_GETRole+email);
     }
-    delEvent(event){
-        return axios.delete(Event_DEL,event);
+    delEvent(eventid){
+        return axios.delete(Event_DEL+eventid);
     }
     getEvents(){
         return axios.get(Event_GET);
@@ -56,6 +58,9 @@ class UserService{
         }
         return axios.put(Event_UP, data);
     }
+    checkUser(user){
+        return axios.post(User_check,user);
+    }
     addUser(user){
         return axios.post(User_ADD,user);
     }
@@ -68,6 +73,9 @@ class UserService{
     }
     addTicket(ticketdata){
         return axios.post(Ticket_ADD,ticketdata);
+    }
+    delTicket(ticketid){
+        return axios.delete(Ticket_Del+ticketid);
     }
     addTicketType(ticketType){
         console.log(ticketType);
